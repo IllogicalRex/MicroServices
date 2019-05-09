@@ -1,0 +1,14 @@
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\bin\Debug\netcoreapp2.2\MicroServicesPoC.deps.json
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\bin\Debug\netcoreapp2.2\MicroServicesPoC.runtimeconfig.json
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\bin\Debug\netcoreapp2.2\MicroServicesPoC.runtimeconfig.dev.json
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\bin\Debug\netcoreapp2.2\MicroServicesPoC.dll
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\bin\Debug\netcoreapp2.2\MicroServicesPoC.pdb
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.csprojAssemblyReference.cache
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.csproj.CoreCompileInputs.cache
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.RazorAssemblyInfo.cache
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.RazorAssemblyInfo.cs
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.AssemblyInfoInputs.cache
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.AssemblyInfo.cs
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.RazorTargetAssemblyInfo.cache
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.dll
+D:\pryectosNet\MicroServicesPoC\MicroServicesPoC\obj\Debug\netcoreapp2.2\MicroServicesPoC.pdb
