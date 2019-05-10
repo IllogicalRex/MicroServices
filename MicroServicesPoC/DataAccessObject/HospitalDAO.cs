@@ -22,23 +22,28 @@ namespace MicroServicesPoC.DataAccessObject
             return _hospitalBD.Get().ToList();
         }
 
-        public List<HospitalDataDTO> FindByFilter(HospitalFilterDTO filter)
+        public List<HospitalFilterDTO> FindByFilter(string name)
         {
-           
-            List<HospitalDataDTO> result = new List<HospitalDataDTO>();
-            for (int i = 0; i < 5; i++)
-            {
-               
-                
+            HospitalDAO dao = new HospitalDAO(); // Buscar patron de diseño singleton / Factory
+            return _hospitalBD.FindByFilter(name);
+        }
 
-                //var element = new HospitalDataDTO(filter);
-                //element.nombre = lista.nombre;
-                //element.Phone = (11180000 + i).ToString();
-                //result.Add(element);
-            }
 
-           
+        public string FindByFilterP(HospitalFilterDTO filter)
+        {
+
+            var result = _hospitalBD.FindByFilterP(filter);
             return result;
+        }
+
+        public string Put(string nombre, HospitalFilterDTO value)
+        {
+            return _hospitalBD.Put(nombre, value);
+        }
+
+        public string Delete(string nombre)
+        {
+            return _hospitalBD.Delete(nombre);
         }
     }
 }

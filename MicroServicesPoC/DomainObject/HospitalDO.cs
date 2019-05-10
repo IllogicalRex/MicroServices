@@ -21,11 +21,27 @@ namespace MicroServicesPoC.DomainObject
             return _hospitalDO.FindAll();
         }
 
-        public List<HospitalDataDTO> FindByFilter(HospitalFilterDTO filter)
+        public List<HospitalFilterDTO> FindByFilter(string name)
         {
-            HospitalDAO dao = new HospitalDAO(); // Buscar patron de diseño singleton / Factory
-            return dao.FindByFilter(filter);
+            // Buscar patron de diseño singleton / Factory
+            return _hospitalDO.FindByFilter(name);
         }
 
+        public string FindByFilterP(HospitalFilterDTO filter)
+        {
+
+            var result = _hospitalDO.FindByFilterP(filter);
+            return result;
+        }
+
+        public string Put(string nombre, HospitalFilterDTO value)
+        {
+            return _hospitalDO.Put(nombre, value);
+        }
+
+        public string Delete(string nombre)
+        {
+            return _hospitalDO.Delete(nombre);
+        }
     }
 }

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace MicroServicesPoC.Controllers
-{   
+{
     [Route("api/[controller]")]
     [ApiController]
     public class HospitalController : ControllerBase
@@ -16,7 +16,7 @@ namespace MicroServicesPoC.Controllers
 
         private HospitalMgr _hospitalMgr = new HospitalMgr();
 
-        
+
         // GET api/values
         [HttpGet]
         public ActionResult<List<HospitalFilterDTO>> Get()
@@ -25,13 +25,35 @@ namespace MicroServicesPoC.Controllers
             return _hospitalMgr.FindAll();
         }
 
-        [Route("FindByFilter")]
-        [HttpPost]
-        public ActionResult<List<HospitalDataDTO>> FindByFilter([FromBody] HospitalFilterDTO filter)
+
+        [HttpGet("{name}")]
+        public ActionResult<List<HospitalFilterDTO>> FindByFilter(string name)//[FromBody] HospitalFilterDTO filter)
         {
-            HospitalMgr manager = new HospitalMgr();
-            var result = manager.FindByFilter(filter);
+
+
+            return _hospitalMgr.FindByFilter(name);
+        }
+
+
+        //[Route("FindByFilter")]
+        [HttpPost]
+        public ActionResult<string> FindByFilterP([FromBody] HospitalFilterDTO filter)
+        {
+            var result = _hospitalMgr.FindByFilterP(filter);
             return result;
+        }
+
+        [HttpPut("{nombre}")]
+        public string Put(string nombre, [FromBody] HospitalFilterDTO value)
+        {
+            return _hospitalMgr.Put(nombre, value);
+        }
+
+        [HttpDelete("{nombre}")]
+        public string Delete(string nombre)
+        {
+            return _hospitalMgr.Delete(nombre);
+
         }
 
     }
