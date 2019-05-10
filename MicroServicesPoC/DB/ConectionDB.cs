@@ -8,12 +8,12 @@ namespace MicroServicesPoC.DB
 {
     public class ConectionDB
     {
-        private readonly IMongoCollection<HospitalFilterDTO> _hospital;
+        private  IMongoCollection<HospitalFilterDTO> _hospital;
 
-        public ConectionDB(IConfiguration config)
+        public ConectionDB()
         {
             // Lee la instancia del servidor para realizar operaciones de base de datos.
-            var client = new MongoClient(config.GetConnectionString("hospitalDB"));
+            var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("hospitalDB");
             _hospital = database.GetCollection<HospitalFilterDTO>("hospitales");
         }

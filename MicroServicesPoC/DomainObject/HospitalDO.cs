@@ -14,6 +14,13 @@ namespace MicroServicesPoC.DomainObject
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
+        private  HospitalDAO _hospitalDO = new HospitalDAO();
+        public List<HospitalFilterDTO> FindAll()
+        {
+           // HospitalDAO dao = new HospitalDAO(); // Buscar patron de diseño singleton / Factory
+            return _hospitalDO.FindAll();
+        }
+
         public List<HospitalDataDTO> FindByFilter(HospitalFilterDTO filter)
         {
             HospitalDAO dao = new HospitalDAO(); // Buscar patron de diseño singleton / Factory

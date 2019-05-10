@@ -14,17 +14,15 @@ namespace MicroServicesPoC.Controllers
     public class HospitalController : ControllerBase
     {
 
-        private readonly ConectionDB _hospitalService;
+        private HospitalMgr _hospitalMgr = new HospitalMgr();
 
-        public HospitalController(ConectionDB hospitalService)
-        {
-            _hospitalService = hospitalService;
-        }
+        
         // GET api/values
         [HttpGet]
         public ActionResult<List<HospitalFilterDTO>> Get()
         {
-            return  _hospitalService.Get().ToList();
+
+            return _hospitalMgr.FindAll();
         }
 
         [Route("FindByFilter")]
