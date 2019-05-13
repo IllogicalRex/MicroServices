@@ -11,33 +11,33 @@ namespace MicroServicesPoC.DataAccessObject
     {
         private ConectionDB _MedicoBD = new ConectionDB();
 
-        public List<MedicoFilterDTO> FindAll()
+        public List<MedicoDataDTO> FindAll()
         {
             return _MedicoBD.GetMedico().ToList();
         }
 
-        public List<MedicoFilterDTO> FindByFilter(string name)
+        public List<MedicoDataDTO> FindByFilter(string _id)
         {
            // HospitalDAO dao = new HospitalDAO(); // Buscar patron de diseño singleton / Factory
-            return _MedicoBD.FindByFilterMedico(name);
+            return _MedicoBD.FindByFilterMedico(_id);
         }
 
 
-        public string FindByFilterP(MedicoFilterDTO filter)
+        public string FindByFilterP(MedicoDataDTO filter)
         {
 
             var result = _MedicoBD.FindByFilterPMedico(filter);
             return result;
         }
 
-        public string Put(string nombre, MedicoFilterDTO value)
+        public string Put(string _id, MedicoDataDTO value)
         {
-            return _MedicoBD.PutMedico(nombre, value);
+            return _MedicoBD.PutMedico(_id, value);
         }
 
-        public string Delete(string nombre)
+        public string Delete(string _id)
         {
-            return _MedicoBD.DeleteMedico(nombre);
+            return _MedicoBD.DeleteMedico(_id);
         }
     }
 }

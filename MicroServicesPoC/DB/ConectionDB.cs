@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using MicroServicesPoC.DTO;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
@@ -8,116 +10,116 @@ namespace MicroServicesPoC.DB
 {
     public class ConectionDB
     {
-        private  IMongoCollection<HospitalFilterDTO> _hospital;
-        private IMongoCollection<MedicoFilterDTO> _medico;
-        private IMongoCollection<UsuarioFilterDTO> _usuario;
+        private  IMongoCollection<HospitalDataDTO> _hospital;
+        private IMongoCollection<MedicoDataDTO> _medico;
+        private IMongoCollection<UsuarioDataDTO> _usuario;
 
         public ConectionDB()
         {
             // Lee la instancia del servidor para realizar operaciones de base de datos.
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("hospitalDB");
-            _hospital = database.GetCollection<HospitalFilterDTO>("hospitales");
-            _medico = database.GetCollection<MedicoFilterDTO>("medicos");
-            _usuario = database.GetCollection<UsuarioFilterDTO>("usuarios");
+            _hospital = database.GetCollection<HospitalDataDTO>("hospitales");
+            _medico = database.GetCollection<MedicoDataDTO>("medicos");
+            _usuario = database.GetCollection<UsuarioDataDTO>("usuarios");
         }
 
         //Obtener todos los Hospitales
-        public List<HospitalFilterDTO> Get()
+        public List<HospitalDataDTO> Get()
         {
             return _hospital.Find(hospital => true).ToList();
         }
         //Obtener Hospitales por nombre
-        public List<HospitalFilterDTO> FindByFilter(string name)
+        public List<HospitalDataDTO> FindByFilter(string _id)
         {
             
-            return _hospital.Find(hospital => hospital.nombre.Contains(name)).ToList();
+            return _hospital.Find(hospital => hospital._id.Equals(_id)).ToList();
         }
         //Crear nuevo hospital
-        public string FindByFilterP(HospitalFilterDTO filter)
+        public string FindByFilterP(HospitalDataDTO filter)
         {
             _hospital.InsertOneAsync(filter);
             
-            return "Se inserto";
+            return String.Concat("Se inserto el Hospital ", filter.nombre);
         }
         //Actualizar hospital
-        public string Put(string nombre, HospitalFilterDTO value)
+        public string Put(string _id, HospitalDataDTO value)
         {
-            _hospital.ReplaceOneAsync(updt => updt.nombre == nombre, value);
-            return "Se actualizo";
+            _hospital.ReplaceOneAsync(updt => updt._id.Equals(_id), value);
+            return String.Concat("Se Actualizo el Hospital con id: ", _id);
         }
         //Eliminar Hospital
-        public string Delete(string nombre)
+        public string Delete(string _id)
         {
-            _hospital.DeleteOneAsync(hospital => hospital.nombre == nombre);
-            return "Elemento eliminado";
+            _hospital.DeleteOneAsync(hospital => hospital._id == _id);
+            return String.Concat("Se Elimino el Hospital con id: ", _id);
         }
 
 
 
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        //Obtener todos los Hospitales
-        public List<MedicoFilterDTO> GetMedico()
+        //Obtener todos los Medicos
+        public List<MedicoDataDTO> GetMedico()
         {
             return _medico.Find(hospital => true).ToList();
         }
-        //Obtener Hospitales por nombre
-        public List<MedicoFilterDTO> FindByFilterMedico(string name)
+        //Obtener Medico por nombre
+        public List<MedicoDataDTO> FindByFilterMedico(string _id)
         {
 
-            return _medico.Find(hospital => hospital.nombre.Contains(name)).ToList();
+            return _medico.Find(medico => medico._id.Equals(_id)).ToList();
         }
-        //Crear nuevo hospital
-        public string FindByFilterPMedico(MedicoFilterDTO filter)
+        //Crear nuevo Medico
+        public string FindByFilterPMedico(MedicoDataDTO filter)
         {
             _medico.InsertOneAsync(filter);
 
             return "Se inserto";
         }
-        //Actualizar hospital
-        public string PutMedico(string nombre, MedicoFilterDTO value)
+        //Actualizar Medico
+        public string PutMedico(string _id, MedicoDataDTO value)
         {
-            _medico.ReplaceOneAsync(updt => updt.nombre == nombre, value);
+            _medico.ReplaceOneAsync(updt => updt._id == _id, value);
             return "Se actualizo";
         }
-        //Eliminar Hospital
-        public string DeleteMedico(string nombre)
+        //Eliminar Medico
+        public string DeleteMedico(string _id)
         {
-            _medico.DeleteOneAsync(hospital => hospital.nombre == nombre);
+            _medico.DeleteOneAsync(hospital => hospital._id == _id);
             return "Elemento eliminado";
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////
 
         //Obtener todos los Usuario
-        public List<UsuarioFilterDTO> GetUsuario()
+        public List<UsuarioDataDTO> GetUsuario()
         {
             return _usuario.Find(usuario => true).ToList();
         }
         //Obtener Usuario por nombre
-        public List<UsuarioFilterDTO> FindByFilterUsuario(string name)
+        public List<UsuarioDataDTO> FindByFilterUsuario(string _id)
         {
 
-            return _usuario.Find(usuario => usuario.nombre.Contains(name)).ToList();
+            return _usuario.Find(usuario => usuario._id.Equals(_id)).ToList();
         }
         //Crear nuevo Usuario
-        public string FindByFilterPUsuario(UsuarioFilterDTO filter)
+        public string FindByFilterPUsuario(UsuarioDataDTO filter)
         {
             _usuario.InsertOneAsync(filter);
 
             return "Se inserto";
         }
         //Actualizar Usuario
-        public string PutUsuario(string nombre, UsuarioFilterDTO value)
+        public string PutUsuario(string _id, UsuarioDataDTO value)
         {
-            _usuario.ReplaceOneAsync(updt => updt.nombre == nombre, value);
+            _usuario.ReplaceOneAsync(updt => updt._id.Equals(_id), value);
             return "Se actualizo";
         }
         //Eliminar Usuario
-        public string DeleteUsuario(string nombre)
+        public string DeleteUsuario(string _id)
         {
-            _usuario.DeleteOneAsync(usuario => usuario.nombre == nombre);
+            _usuario.DeleteOneAsync(usuario => usuario._id.Equals(_id));
             return "Elemento eliminado";
         }
 

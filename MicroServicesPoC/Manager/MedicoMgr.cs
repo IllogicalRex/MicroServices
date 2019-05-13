@@ -10,34 +10,34 @@ namespace MicroServicesPoC.Manager
     public class MedicoMgr
     {
         private MedicoDO _medicoDO = new MedicoDO();
-        public List<MedicoFilterDTO> FindAll()
+        public List<MedicoDataDTO> FindAll()
         {
 
             //    HospitalDO domain = new HospitalDO(); // Buscar patron de diseño singleton / Factory
             return _medicoDO.FindAll();
         }
-        public List<MedicoFilterDTO> FindByFilter(string name)
+        public List<MedicoDataDTO> FindByFilter(string _id)
         {
 
             // Buscar patron de diseño singleton / Factory
-            return _medicoDO.FindByFilter(name);
+            return _medicoDO.FindByFilter(_id);
         }
 
-        public string FindByFilterP(MedicoFilterDTO filter)
+        public string FindByFilterP(MedicoDataDTO filter)
         {
 
             var result = _medicoDO.FindByFilterP(filter);
             return result;
         }
 
-        public string Put(string nombre, MedicoFilterDTO value)
+        public string Put(string _id, MedicoDataDTO value)
         {
-            return _medicoDO.Put(nombre, value);
+            return _medicoDO.Put(_id, value);
         }
 
-        public string Delete(string nombre)
+        public string Delete(string _id)
         {
-            return _medicoDO.Delete(nombre);
+            return _medicoDO.Delete(_id);
         }
     }
 }

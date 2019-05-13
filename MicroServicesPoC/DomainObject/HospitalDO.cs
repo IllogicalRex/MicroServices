@@ -15,33 +15,33 @@ namespace MicroServicesPoC.DomainObject
         /// <param name="filter"></param>
         /// <returns></returns>
         private  HospitalDAO _hospitalDO = new HospitalDAO();
-        public List<HospitalFilterDTO> FindAll()
+        public List<HospitalDataDTO> FindAll()
         {
            // HospitalDAO dao = new HospitalDAO(); // Buscar patron de diseño singleton / Factory
             return _hospitalDO.FindAll();
         }
 
-        public List<HospitalFilterDTO> FindByFilter(string name)
+        public List<HospitalDataDTO> FindByFilter(string _id)
         {
             // Buscar patron de diseño singleton / Factory
-            return _hospitalDO.FindByFilter(name);
+            return _hospitalDO.FindByFilter(_id);
         }
 
-        public string FindByFilterP(HospitalFilterDTO filter)
+        public string FindByFilterP(HospitalDataDTO filter)
         {
 
             var result = _hospitalDO.FindByFilterP(filter);
             return result;
         }
 
-        public string Put(string nombre, HospitalFilterDTO value)
+        public string Put(string _id, HospitalDataDTO value)
         {
-            return _hospitalDO.Put(nombre, value);
+            return _hospitalDO.Put(_id, value);
         }
 
-        public string Delete(string nombre)
+        public string Delete(string _id)
         {
-            return _hospitalDO.Delete(nombre);
+            return _hospitalDO.Delete(_id);
         }
     }
 }

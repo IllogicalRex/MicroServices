@@ -11,34 +11,34 @@ namespace MicroServicesPoC.Manager
     {
         private UsuarioDO _usuarioDO = new UsuarioDO();
 
-        public List<UsuarioFilterDTO> FindAll()
+        public List<UsuarioDataDTO> FindAll()
         {
 
             //    HospitalDO domain = new HospitalDO(); // Buscar patron de diseño singleton / Factory
             return _usuarioDO.FindAll();
         }
-        public List<UsuarioFilterDTO> FindByFilter(string name)
+        public List<UsuarioDataDTO> FindByFilter(string _id)
         {
 
             // Buscar patron de diseño singleton / Factory
-            return _usuarioDO.FindByFilter(name);
+            return _usuarioDO.FindByFilter(_id);
         }
 
-        public string FindByFilterP(UsuarioFilterDTO filter)
+        public string FindByFilterP(UsuarioDataDTO filter)
         {
 
             var result = _usuarioDO.FindByFilterP(filter);
             return result;
         }
 
-        public string Put(string nombre, UsuarioFilterDTO value)
+        public string Put(string _id, UsuarioDataDTO value)
         {
-            return _usuarioDO.Put(nombre, value);
+            return _usuarioDO.Put(_id, value);
         }
 
-        public string Delete(string nombre)
+        public string Delete(string _id)
         {
-            return _usuarioDO.Delete(nombre);
+            return _usuarioDO.Delete(_id);
         }
     }
 }

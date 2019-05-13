@@ -18,40 +18,40 @@ namespace MicroServicesPoC.Controllers
 
             // GET api/values
             [HttpGet]
-            public ActionResult<List<UsuarioFilterDTO>> Get()
+            public ActionResult<List<UsuarioDataDTO>> Get()
             {
 
                 return _usuarioMgr.FindAll();
             }
 
 
-            [HttpGet("{name}")]
-            public ActionResult<List<UsuarioFilterDTO>> FindByFilter(string name)//[FromBody] HospitalFilterDTO filter)
+            [HttpGet("{_id}")]
+            public ActionResult<List<UsuarioDataDTO>> FindByFilter(string _id)//[FromBody] HospitalFilterDTO filter)
             {
 
 
-                return _usuarioMgr.FindByFilter(name);
+                return _usuarioMgr.FindByFilter(_id);
             }
 
 
             //[Route("FindByFilter")]
             [HttpPost]
-            public ActionResult<string> FindByFilterP([FromBody] UsuarioFilterDTO filter)
+            public ActionResult<string> FindByFilterP([FromBody] UsuarioDataDTO filter)
             {
                 var result = _usuarioMgr.FindByFilterP(filter);
                 return result;
             }
 
-            [HttpPut("{nombre}")]
-            public string Put(string nombre, [FromBody] UsuarioFilterDTO value)
+            [HttpPut("{_id}")]
+            public string Put(string _id, [FromBody] UsuarioDataDTO value)
             {
-                return _usuarioMgr.Put(nombre, value);
+                return _usuarioMgr.Put(_id, value);
             }
 
-            [HttpDelete("{nombre}")]
-            public string Delete(string nombre)
+            [HttpDelete("{_id}")]
+            public string Delete(string _id)
             {
-                return _usuarioMgr.Delete(nombre);
+                return _usuarioMgr.Delete(_id);
 
             }
         }

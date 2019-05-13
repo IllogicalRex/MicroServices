@@ -17,28 +17,28 @@ namespace MicroServicesPoC.DataAccessObject
 
         private ConectionDB _usuarioBD = new ConectionDB();
 
-        public List<UsuarioFilterDTO> FindAll()
+        public List<UsuarioDataDTO> FindAll()
         {
             return _usuarioBD.GetUsuario().ToList();
         }
 
-        public List<UsuarioFilterDTO> FindByFilter(string name)
+        public List<UsuarioDataDTO> FindByFilter(string name)
         {
             HospitalDAO dao = new HospitalDAO(); // Buscar patron de diseño singleton / Factory
             return _usuarioBD.FindByFilterUsuario(name);
         }
 
 
-        public string FindByFilterP(UsuarioFilterDTO filter)
+        public string FindByFilterP(UsuarioDataDTO filter)
         {
 
             var result = _usuarioBD.FindByFilterPUsuario(filter);
             return result;
         }
 
-        public string Put(string nombre, UsuarioFilterDTO value)
+        public string Put(string _id, UsuarioDataDTO value)
         {
-            return _usuarioBD.PutUsuario(nombre, value);
+            return _usuarioBD.PutUsuario(_id, value);
         }
 
         public string Delete(string nombre)

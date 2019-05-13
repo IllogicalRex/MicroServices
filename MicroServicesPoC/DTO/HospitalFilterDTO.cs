@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,11 @@ namespace MicroServicesPoC.DTO
         /// <summary>
         /// Nombre del hospital
         /// </summary>
-        public string nombre { get; set; }
-        public object usuario { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string _id { get; set; }
+        //public string nombre { get; set; }
+        //public object usuario { get; set; }
     }
 
     /// <summary>
@@ -25,7 +29,7 @@ namespace MicroServicesPoC.DTO
     [BsonIgnoreExtraElements]
     public class HospitalDataDTO : HospitalFilterDTO
     {
-
+        //public object id { get; set; }
         public string nombre { get; set; }
         public object usuario { get; set; }
         /// <summary>
@@ -34,8 +38,7 @@ namespace MicroServicesPoC.DTO
         /// <param name="filter"></param>
         public HospitalDataDTO(HospitalFilterDTO filter)
         {
-            nombre = filter.nombre;
-            usuario = filter.usuario;
+            
             
         }
        

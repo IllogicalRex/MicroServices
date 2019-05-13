@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace MicroServicesPoC.DTO
     [BsonIgnoreExtraElements]
     public class MedicoFilterDTO
     {
-        public string nombre { get; set; }
-        public object usuario { get; set; }
-        public object hospital { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string _id { get; set; }
     }
 
     [BsonIgnoreExtraElements]
@@ -25,13 +26,13 @@ namespace MicroServicesPoC.DTO
         /// Constructor a partir de ul filtro
         /// </summary>
         /// <param name="filter"></param>
-        public MedicoDataDTO(MedicoFilterDTO filter)
-        {
-            nombre = filter.nombre;
-            usuario = filter.usuario;
-            hospital = filter.hospital;
+        //public MedicoDataDTO(MedicoFilterDTO filter)
+        //{
+        //    nombre = filter.nombre;
+        //    usuario = filter.usuario;
+        //    hospital = filter.hospital;
 
-        }
+        //}
 
 
 

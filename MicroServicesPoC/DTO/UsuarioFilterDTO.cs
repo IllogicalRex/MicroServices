@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace MicroServicesPoC.DTO
     [BsonIgnoreExtraElements]
     public class UsuarioFilterDTO
     {
-        public string role { get; set; }
-        public string nombre { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string _id { get; set; }
+       
         
     }
     [BsonIgnoreExtraElements]
@@ -23,12 +24,12 @@ namespace MicroServicesPoC.DTO
         public string email { get; set; }
         public string password { get; set; }
 
-        public UsuarioDataDTO(UsuarioFilterDTO filter)
-        {
-            this.nombre = filter.nombre;
-            this.email = filter.email;
-            this.password = filter.password;
-            this.role = filter.role;
-        }
+        //public UsuarioDataDTO(UsuarioFilterDTO filter)
+        //{
+        //    this.nombre = filter.nombre;
+        //    this.email = filter.email;
+        //    this.password = filter.password;
+        //    this.role = filter.role;
+        //}
     }
 }
