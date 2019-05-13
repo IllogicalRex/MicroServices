@@ -7,41 +7,41 @@ using System.Threading.Tasks;
 
 namespace MicroServicesPoC.DomainObject
 {
-    public class MedicoDO
+    public class UsuarioDO
     {
         /// <summary>
         /// Busca por filtro
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        private MedicoDAO _medicoDO = new MedicoDAO();
-        public List<MedicoFilterDTO> FindAll()
+        private UsuarioDAO _usuariolDO = new UsuarioDAO();
+        public List<UsuarioFilterDTO> FindAll()
         {
             // HospitalDAO dao = new HospitalDAO(); // Buscar patron de diseño singleton / Factory
-            return _medicoDO.FindAll();
+            return _usuariolDO.FindAll();
         }
 
-        public List<MedicoFilterDTO> FindByFilter(string name)
+        public List<UsuarioFilterDTO> FindByFilter(string name)
         {
             // Buscar patron de diseño singleton / Factory
-            return _medicoDO.FindByFilter(name);
+            return _usuariolDO.FindByFilter(name);
         }
 
-        public string FindByFilterP(MedicoFilterDTO filter)
+        public string FindByFilterP(UsuarioFilterDTO filter)
         {
 
-            var result = _medicoDO.FindByFilterP(filter);
+            var result = _usuariolDO.FindByFilterP(filter);
             return result;
         }
 
-        public string Put(string nombre, MedicoFilterDTO value)
+        public string Put(string nombre, UsuarioFilterDTO value)
         {
-            return _medicoDO.Put(nombre, value);
+            return _usuariolDO.Put(nombre, value);
         }
 
         public string Delete(string nombre)
         {
-            return _medicoDO.Delete(nombre);
+            return _usuariolDO.Delete(nombre);
         }
     }
 }

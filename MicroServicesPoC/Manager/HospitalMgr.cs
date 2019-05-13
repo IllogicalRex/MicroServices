@@ -23,7 +23,7 @@ namespace MicroServicesPoC.Manager
             return _hospitalDO.FindByFilter(name);
         }
 
-        public string FindByFilterP( HospitalFilterDTO filter)
+        public string FindByFilterP(HospitalFilterDTO filter)
         {
 
             var result = _hospitalDO.FindByFilterP(filter);
